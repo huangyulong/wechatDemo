@@ -1,0 +1,17 @@
+<view class="start-container">
+  <view class='start-user'>
+    <image 
+      class='start-userimage' 
+      mode="scaleToFill" 
+      src="{{userInfo.avatarUrl}}"></image>
+    <text class='start-usertext'>{{userInfo.nickName}}</text>
+  </view>
+  <view class="start-login">
+    <text>{{welcome}}</text>
+  </view>
+  <view class='start-button'>
+    <button size="default" open-type='getUserInfo' bindgetuserinfo='getUserInfo'>
+      登陆
+    </button>
+  </view>
+</view>

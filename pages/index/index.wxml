@@ -1,0 +1,73 @@
+<!--index.wxml-->
+<wxs src="./substring.wxs" module="substrTool" />
+<view class='index-swiper-container'>
+    <swiper
+    style="height: 350rpx;"
+    indicator-dots
+    indicator-color="gray"
+    indicator-active-color="black"
+    autoplay
+    interval= '3000'
+    circular
+  >
+    <block wx:for="{{swipers}}" wx:key="unique" > 
+      <swiper-item>
+        <image src="{{item}}"  mode="aspectFill" />
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+
+<view class="index-tab">
+  <button size="mini" plain hover-class="hover-button" bindtap="changeSelect" data-type= "1" 
+  style="border-bottom: {{isActive === '1' ? '2px solid lightcoral' : 'none'}}" >新闻</button>
+  <button size="mini" plain hover-class="hover-button" bindtap="changeSelect"  data-type="2"
+  style="border-bottom: {{isActive === '2' ? '2px solid lightcoral' : 'none'}}" >美图</button>
+  <button size="mini" plain hover-class="hover-button" bindtap="changeSelect"  data-type="3"
+  style="border-bottom: {{isActive === '3' ? '2px solid lightcoral' : 'none'}}" >段子</button>
+  <button size="mini" plain hover-class="hover-button" bindtap="changeSelect"  data-type="4"
+  style="border-bottom: {{isActive === '4' ? '2px solid lightcoral' : 'none'}}" >天气</button>
+</view>
+
+<view class='index-container' wx:if="{{isActive === '1' || isActive === '3'}}">
+  <view wx:for="{{list}}" wx:key="list" class="index-list-container">
+    <view class='index-list-image' wx:if="{{item.profile_image}}">
+      <image src="{{item.profile_image}}" />
+    </view>
+    <view class='index-list-text'>
+      <view class='index-list-text-first'>
+        <text wx:if="{{item.name}}">{{item.name}}</text>
+        <text wx:if="{{item.title}}">{{substrTool.sub(item.title, 15)}}</text>
+      </view>
+      <view class='index-list-text-second'>
+        <text wx:if="{{item.theme_name}}" style="margin-right: 20rpx;">{{item.theme_name}}</text>
+        <text wx:if="{{item.digest}}">{{substrTool.sub(item.digest, 25)}}</text>
+        <text wx:if="{{item.passtime}}">{{item.passtime}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class='index-image-container' wx:if="{{isActive === '2'}}">
+  <view wx:for="{{imageList}}" wx:key="indexImage" class="index-image">
+    <image src="{{item.url}}" mode="aspectFill" />
+    <text>{{item.type+"--"+item.publishedAt}}</text>
+  </view>
+</view>
+
+<view class='index-weather-container' wx:if="{{isActive === '4'}}">
+  <view wx:for="{{weatherList}}" wx:key="indexWeather" class="index-weather">
+    <!-- <image src="{{item.url}}" mode="aspectFill" /> -->
+    <view> <text>日期： {{item.date}}</text> </view>
+    <view> <text>天气： {{item.type}}</text> </view>
+    <view> <text>最高温度： {{item.high}}</text> </view>
+    <view> <text>最低温度： {{item.low}}</text> </view>
+    <view> <text>风向： {{item.fengxiang}}</text> </view>
+    <view> <text>风力： {{item.fengli}}</text> </view>
+  </view>
+</view>
+
+<view style="margin-top: 20rpx; text-align: center;" wx:if="{{isActive === '3'||isActive === '2'}}">
+  <button wx:if="{{showPreBtn}}" type="default" size="mini" bindtap="pre">上一页</button>  
+  <button wx:if="{{showNextBtn}}" style="margin-left: 20rpx;" type="primary" size="mini" bindtap="next">下一页</button>  
+</view>

@@ -11,7 +11,7 @@
   </view>
   <view class='start-button'>
     <button size="default" open-type='getUserInfo' bindgetuserinfo='getUserInfo'>
-      登陆
+      授权登陆
     </button>
   </view>
 </view>

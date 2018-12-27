@@ -1,0 +1,12 @@
+var isHad = function (val, reg) {
+  console.log(val)
+  console.log(reg)
+  if(val.indexOf(reg) !== -1) {
+    console.log(val)
+    return 1
+  } else {
+    return 0
+  }
+}
+
+module.exports.isHad = isHad

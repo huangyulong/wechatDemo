@@ -40,6 +40,7 @@ App({
     console.log("小程序退出，或者切换到后台")
   },
   globalData: {
-    userInfo: null
+    userInfo: {},
+    detailData: {}
   }
 })

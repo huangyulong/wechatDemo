@@ -1,9 +1,10 @@
 {
   "pages":[
+    "pages/logs/logs",
     "pages/index/index",
     "pages/test/test",
-    "pages/logs/logs",
-    "pages/start/start"
+    "pages/start/start",
+    "pages/newsDetail/detail"
   ],
   "window":{
     "backgroundTextStyle":"dark",

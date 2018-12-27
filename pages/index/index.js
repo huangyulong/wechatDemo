@@ -10,15 +10,39 @@ Page({
     currentPage: 2,
     showPreBtn: false,
     showNextBtn: true,
+    showLoading: false,
+    fixed: 'fixTop',
     swipers: [
-      '../../images/car1.jpg', '../../images/car2.jpg', 
+      '../../images/car2.jpg', 
       '../../images/car3.jpg', '../../images/car4.jpg',  '../../images/car5.png',
     ]
   },
   onLoad: function () {
     this.getNewsData()
   },
+  onReachBottom: function() {
+    this.setData({
+      showLoading: true
+    })
+    this.next()
+    console.log('到底啦')
+  },
+  goViewTop() {
+    wx.pageScrollTo({
+      scrollTop: 0,
+      duration: 500
+    })
+  },
+  goDetail(e) {
+    let data = e.currentTarget.dataset.detail
+    app.globalData.detailData = data
+    wx.navigateTo({
+      url: '../../pages/newsDetail/detail',
+    })
+
+  },
   changeSelect: function(e) {
+    let that = this
     let tab = e.currentTarget.dataset.type
     if(tab !== this.data.isActive) {
       this.setData({
@@ -28,11 +52,19 @@ Page({
         showNextBtn: true,
       })
       if (tab === '1') {
-        this.getNewsData()
+        this.setData({
+          list: []
+        }, function(){
+          that.getNewsData()
+        })
       } else if (tab === '2'){
         this.getImageList()
       } else if (tab === '3') {
-        this.getDuanziData()
+        this.setData({
+          list: []
+        },function(){
+          that.getDuanziData()
+        })
       } else if (tab === '4') {
         this.getWeatherData()
       }
@@ -100,9 +132,10 @@ Page({
         page: that.data.currentPage
       },
       success: function(res) {
-        console.log(res)
+        let data = (that.data.imageList).concat(res.data.data)
         that.setData({
-          imageList: res.data.data
+          imageList: data,
+          showLoading: false
         })
       }
     })
@@ -130,8 +163,10 @@ Page({
         page: that.data.currentPage
       },
       success(res) {
+        let data = (that.data.list).concat(res.data.data)
         that.setData({
-          list: res.data.data
+          list: data,
+          showLoading: false
         })
       }
     })

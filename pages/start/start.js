@@ -1,3 +1,4 @@
+var app = getApp()
 Page({
   data: {
     welcome: '请登录',
@@ -14,6 +15,7 @@ Page({
     let that = this
     console.log(e)
     if(e.detail) {
+      app.globalData.userInfo = e.detail.rawData
       this.setData({
         userInfo: JSON.parse(e.detail.rawData),
         welcome: '欢迎：' + JSON.parse(e.detail.rawData).nickName

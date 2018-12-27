@@ -1,0 +1,20 @@
+<wxs src="./indexof.wxs" module="indexAt" />
+<wxs src="../index/substring.wxs" module="subTool" /> 
+<view>
+  <view class='detail-title'>
+    <image src="../../images/car.png" /> 
+    <text wx:if="{{data.name}}">{{subTool.sub(data.name, 10)}}</text>
+    <text wx:if="{{data.title}}">{{subTool.sub(data.title, 10)}}</text>
+    <text wx:if="{{data.url}}">{{subTool.sub(data.type, 10)}}</text>
+  </view>
+  <view wx:for="{{data}}" wx:for-index="key"  wx:for-item="value" wx:key="detail">
+    <view wx:if="{{key === 'text'}}" class="detail-text">{{value}}</view>
+    <view wx:if="{{key === 'digest'}}" class="detail-text">{{value}}</view>
+    <view wx:if="{{indexAt.isHad(key,'image')}}" class="detail-image">
+      <image src="{{(value && value !== null) ? value : '../../images/lose.jpg'}}" mode="scaleToFill" />
+    </view>
+    <view wx:if="{{indexAt.isHad(key,'url')}}" class="detail-image" style="height: 800rpx">
+      <image src="{{(value && value !== null) ? value : '../../images/lose.jpg'}}" mode="scaleToFill" />
+    </view>
+  </view>
+</view>

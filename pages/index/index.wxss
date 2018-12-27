@@ -39,12 +39,13 @@
 .index-list-text-first {
   color: #333;
   flex: 1;
-  font-size: 40rpx;
+  font-size: 32rpx;
 }
 .index-list-text-second {
-  height: 50rpx;
+  height: 56rpx;
   color: #ccc;
-  font-size: 30rpx;
+  font-size: 28rpx;
+  line-height: 56rpx;
 }
 .index-tab {
   width: 100%;
@@ -101,4 +102,29 @@
   margin-top: 20rpx;
   text-indent: 20rpx;
   padding: 20rpx 0;
+}
+.loading-container {
+  width: 100%;
+  margin-top: 20rpx;
+  display: flex;
+  height: 100rpx;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+}
+.loading-container image {
+  width: 70rpx;
+  height: 70rpx;
+}
+.goTop {
+  position: fixed;
+  bottom: 10rpx;
+  right: 10rpx;
+  z-index: 10;
+  width: 150rpx;
+  height: 150rpx;
+}
+image {
+  width: 100%;
+  height: 100%;
 }

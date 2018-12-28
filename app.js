@@ -1,6 +1,7 @@
 //app.js
 App({
   onLaunch: function () {
+    this.getSystemInfo()
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -33,6 +34,14 @@ App({
       }
     })
   },
+  getSystemInfo: function () {
+    let that = this
+    wx.getSystemInfo({
+      success: function (res) {
+        that.globalData.systemInfo = res
+      }
+    })
+  },
   onShow: function () {
     console.log("小程序启动，或从后台进入小程序")
   },
@@ -41,6 +50,7 @@ App({
   },
   globalData: {
     userInfo: {},
-    detailData: {}
+    detailData: {},
+    systemInfo: {}
   }
 })

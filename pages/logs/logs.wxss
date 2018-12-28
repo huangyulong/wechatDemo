@@ -32,6 +32,7 @@
   border: 1px solid #ccc;
   border-radius: 20rpx;
   margin: 0 20rpx;
+  overflow: hidden;
 }
 .user-image image {
   width: 100%;
@@ -39,8 +40,7 @@
 }
 .user-name {
   flex: 1;
-  color: lightsalmon;
-  font-size: 36rpx;
+  font-size: 60rpx;
 }
 
 .system-container {

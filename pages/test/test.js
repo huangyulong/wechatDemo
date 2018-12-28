@@ -1,37 +1,33 @@
+const app = getApp()
 Page({
   data: {
     title: '这是用来测试viewScroll',
-    view: "third",
-    arrView: ["first", "second", "third", "forth", "first", "second", "third", "forth", "first", "second"],
-    swipers: [
-      {label: 'first', color: 'blue'},
-      { label: 'second', color: 'red' },
-      { label: 'third', color: 'green' },
-      {label: 'forth', color: 'yellow'}
-    ],
-    nodes: [
-      {
-        name: 'div',
-        attrs: {
-          class: 'nodeDiv'
-        },
-        children: [
-          {
-            type: 'text',
-            text: 'rich-text'
-          }
-        ]
-      }
-    ]
+    videos: [],
+    height: app.globalData.systemInfo.windowHeight
   },
-
-  changeView: function() {
-    console.log(this.data.view)
-    let i = parseInt(Math.random() * 10)
-    this.setData({
-      view: this.data.arrView[i]
-    },() => {
-      console.log(this.data.view)
+  onLoad: function(){
+    this.getVideos()
+  },
+  getVideos: function () {
+    let that = this
+    wx.request({
+      url: 'https://api.apiopen.top/videoCategoryDetails?id=32',
+      method: 'GET',
+      success: function(res) {
+        let data = res.data.result
+        let video = []
+        data.forEach((item) => {
+          video.push({
+            title: item.data.content.data.title,
+            playUrl: item.data.content.data.playUrl,
+            description: item.data.content.data.description,
+            coverUrl: item.data.content.data.cover.feed
+          })
+        })
+        that.setData({
+          videos: video
+        })
+      }
     })
   }
 })

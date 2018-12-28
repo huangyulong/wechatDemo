@@ -13,18 +13,17 @@ Page({
   },
   getUserInfo: function(e) {
     let that = this
-    console.log(e)
     if(e.detail) {
-      app.globalData.userInfo = e.detail.rawData
+      app.globalData.userInfo = e.detail.userInfo
       this.setData({
-        userInfo: JSON.parse(e.detail.rawData),
-        welcome: '欢迎：' + JSON.parse(e.detail.rawData).nickName
+        userInfo: e.detail.userInfo,
+        welcome: '欢迎：' + e.detail.userInfo.nickName
       },function(){
         setTimeout(function(){
           wx.reLaunch({
             url: '../index/index'
           })
-        }, 3000)
+        }, 500)
       })
     } 
   }

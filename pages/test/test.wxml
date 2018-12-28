@@ -1,67 +1,25 @@
-<view>
-  {{title}}
-</view>
-<view class='scroll-container'>
-  <scroll-view 
-    scroll-x
-    style="height: 200rpx; overflow: hidden; white-space: nowrap;"
-    scroll-into-view="{{view}}"
-  >
-    <view id="first" class="scroll-item" style="background-color: lightblue;">
-    first one</view>  
-    <view id="second" class="scroll-item" style="background-color: lightgray;">
-    second one</view>  
-    <view id="third" class="scroll-item" style="background-color: lightgreen;">
-    third one</view>  
-    <view id="forth" class="scroll-item" style="background-color: rgba(0,0,0,0.5);">
-    forth one</view>  
-  </scroll-view>
-</view>
-
-<view>
-<icon type="success" color="green" />
-  <button bindtap="changeView">切换页面</button>
-</view>
-
-<view style="width: 100%; height: 300rpx; overflow: hidden;">
+<view class='video-container'>
   <swiper
-    indicator-dots
-    indicator-color="gray"
-    indicator-active-color="black"
-    autoplay
-    interval= '2000'
+    duration = "800"
     circular
+    vertical
+    style="height: {{height}}px; width: 100%;"
   >
-    <block wx:for="{{swipers}}" wx:key="unique">
-      <swiper-item style="display: flex; align-items: center; justify-content: center;">
-        <view class="swiperItem" style="background-color: {{item.color}}">
-        {{item.label}}</view>
+    <block wx:for="{{videos}}" wx:key="videos" >
+      <swiper-item>
+        <video
+          src="{{item.playUrl}}"
+          controls
+          muted
+          style="width: 100%; height:100%; position: relative; "
+        >
+          <cover-view class='cover-title'>
+            {{item.title}}
+          </cover-view>
+          <cover-view class='cover-desc'>{{item.description}}</cover-view> 
+        </video>
       </swiper-item>
-    </block>
+      
+    </block> 
   </swiper>
-</view>
-
-<view class='nodeContainer'>
-  <rich-text nodes="{{nodes}}"></rich-text>
-</view>
-
-<view style="width: 100%; height: 40px;">
-  <progress 
-    percent="30" 
-    show-info
-    border-radius= "10"
-    stroke-width='20'
-    backgroundColor='lightblue'
-    activeColor="yellow"
-    active
-  />
-</view>
-
-<view style="width: 100%; height: 40px;">
-  <progress percent='40' show-info active />
-</view>
-
-<view>
-  <button style="width: 90%; margin:0 auto;" size="default" type="primary" loading="true">点击</button>
-  <button  style="width: 90%; margin:0 auto;" size="default" type="default" loading="true">点击</button>
 </view>

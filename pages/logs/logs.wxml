@@ -4,7 +4,7 @@
     <image src="{{user.avatarUrl}}" mode="scaleToFill" />
   </view> 
   <view class='user-name'>
-    <text>{{user.nickName}}</text>
+    <text style="color:lightcoral;">{{user.nickName}}</text>
   </view>
 </view>
   <view class='system-container'>
@@ -29,10 +29,13 @@
     longitude='{{location.longitude}}'
     scale='14'
     markers='{{marks}}'
+    polyline='{{polylines}}'
     show-location
     show-compass
     style="width: 100%; height: 500rpx;"
-  ></map>
+  >
+    <cover-view style="background-color: lightblue">可以在这里添加控制按钮什么的</cover-view>  
+  </map>
 </view>
 
 <view style="margin-top: 40rpx;">
@@ -46,6 +49,5 @@
         <view class="log-item"><text>{{index + 1}}、 {{log}}</text></view>
       </block>
     </scroll-view>
-  
   </view>
 </view>

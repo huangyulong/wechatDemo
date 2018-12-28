@@ -1,9 +1,9 @@
 {
   "pages":[
+    "pages/start/start",
+    "pages/test/test",
     "pages/logs/logs",
     "pages/index/index",
-    "pages/test/test",
-    "pages/start/start",
     "pages/newsDetail/detail"
   ],
   "window":{
@@ -21,18 +21,24 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页",
+        "color": "#ffffff",
+        "selectedColor": "29fa1a",
         "iconPath": "images/home.png",
         "selectedIconPath": "images/selectedHome.png"
       },
       {
         "pagePath": "pages/test/test",
-        "text": "测试",
-        "iconPath": "images/home.png",
-        "selectedIconPath": "images/selectedHome.png"
+        "text": "小视频",
+        "color": "#ffffff",
+        "selectedColor": "29fa1a",
+        "iconPath": "images/video.png",
+        "selectedIconPath": "images/selectedVideo.png"
       },
       {
         "pagePath": "pages/logs/logs",
-        "text": "日志",
+        "text": "信息",
+        "color": "#ffffff",
+        "selectedColor": "29fa1a",
         "iconPath": "images/log.png",
         "selectedIconPath": "images/selectedLog.png"
       }
